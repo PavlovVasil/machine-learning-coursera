@@ -28,12 +28,12 @@ sigma = zeros(1, size(X, 2));
 
 mu = mean(X);
 sigma = std(X);
-mu
-sigma
 
-% X_norm(:, 2) = X(:, 2) .* 
-
-
+% iterating all columns and normalizing them
+for i = 1:size(X, 2),
+    normalizedFeature = (X(:, i) - mu(i)) / sigma(i);
+	X_norm(:, i) = normalizedFeature;
+end
 
 
 % ============================================================
