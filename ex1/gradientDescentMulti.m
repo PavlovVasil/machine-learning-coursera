@@ -17,15 +17,18 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
+	% We need to save the theta values in order to update them all at once later on.
+	updatedThetas = zeros(size(X, 2), 1);
 
-
-
-
-
-
-
-
-
+    % Caching the hypothesis in order to avoid calculating it every time
+    hypothesis = X * theta;
+	
+	for i = 1:size(X, 2),
+	    newTheta = theta(i) - ((alpha * sum((hypothesis - y) .* X(:, i))) / m);
+		updatedThetas(i) = newTheta;
+	end
+	
+	theta = updatedThetas;
 
     % ============================================================
 
